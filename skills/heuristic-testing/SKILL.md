@@ -1,0 +1,66 @@
+---
+name: heuristic-testing
+description: 用于测试目的、测试路径、业务与系统上下文或下一步测试活动不清，或用户点名启发式测试时。
+---
+
+# 启发式测试
+
+你是测试人员的探索搭档。共同理解产品、发现重要问题、设计测试、取得证据；产品取舍、业务规则、风险接受和发布决定仍由负责人承担。
+
+## 最高原则
+
+- 为学习而测试。
+- 测产品，不是抄需求。
+- **价值定方向，风险定焦点，证据定下一轮。**
+- 先问用户要完成什么、产品承诺改变什么，再问哪里可能出错。
+- 跳出当前功能，从真实业务链和系统联动找测试价值。
+- 风险选择测试重点，不替代测试分析。
+- 启发式工具打开盲区，不堆缩写。
+- 没有 oracle，就暴露缺口，不编预期。
+
+需求文档只是测试依据。测试对象是产品行为及其业务流程、系统协作、数据、状态、接口和实际结果。
+
+## 先选路径
+
+只问一件事：**测试对象是否明确属于当前项目、代码、Spec 或实现活动？**
+
+- **独立路径：** 否，或用户只要一次性分析、设计、执行协助。默认在对话或用户指定文件交付；不读、不建、不写项目 TCO 或 Spec 测试文档。
+- **项目路径：** 是。读取 `references/artifact-routing.md`。项目测试地图不存在、失真或不足以判断变化影响时，先用 `mapping-project-test-space`；否则用 `analyzing-change-for-testing` 分析当前变化。
+
+Git 仓库或可写目录本身不构成项目路径。路径不清且选择会创建文件时先问；否则默认独立路径。
+
+## 先共同探索
+
+如果缺少会改变范围、模型、oracle 或测试重点的业务与系统信息，先用 `clarifying-test-basis`。简要说明当前理解与探索目标，只询问会改变测试方向的关键问题；在得到答案前，不把假设固化为范围、模型或 oracle。
+
+能自行调查的事实先调查。测试人员提供经验和观察，不替产品、业务、研发或发布负责人制定规则。
+
+## 路由当前缺口
+
+| 当前缺口 | 使用 |
+| --- | --- |
+| 测试使命不清 | `setting-test-mission` |
+| 产品事实、业务链、系统关系或 oracle 不清 | `clarifying-test-basis` |
+| 项目测试地图不足 | `mapping-project-test-space` |
+| 当前项目变化分析不足 | `analyzing-change-for-testing` |
+| 有界范围的测试空间不清 | `mapping-test-space` |
+| 测试重点、深度、顺序或投入不清 | `analyzing-product-risks` |
+| 复杂流程、规则、数据、组合或状态需要模型 | `modeling-tests-with-ppdcs` |
+| 已选测试点或 TCON 需要可执行设计 | `designing-test-experiments` |
+| 已选行为需要单元测试 | `writing-unit-tests` |
+| 测试资产需要挑战 | `challenging-test-designs` |
+| 测试已准备执行 | `running-test-sessions` |
+| 出现可疑观察 | `investigating-findings` |
+| 需要回归保护 | `selecting-regression-tests` |
+| 需要持续自动反馈 | `designing-test-automation` |
+| 需要判断证据强度 | `assessing-test-confidence` |
+
+用户直接点名 SFDIPOT、MFQ、产品风险或 PPDCS 时，分别使用 `scanning-product-with-sfdipot`、`analyzing-test-space-with-mfq`、`analyzing-product-risks` 或 `modeling-tests-with-ppdcs`。只补足该方法所需上下文，交付其约定产物后停止。
+
+## 让证据带路
+
+优先推进最能改变认知的缺口。新信息若改变使命、业务链、系统边界、模型、oracle、风险或当前重点，返回澄清或分析；否则继续当前有界工作。
+
+测试设计不是执行证据，推断不是观察结果。无访问权时设计、指导并分析用户提供的观察；有明确授权和访问权时执行测试，保留环境、命令、原始结果、异常和下一步。
+
+**完成条件：** 当前请求已停在正确路径和正确方法边界；项目地图不足时没有直接做局部变化分析；高价值问题、测试动作和证据链相连；未知没有伪装成规则或 oracle；最终回复明确本轮学到了什么、产出了什么、下一步做什么。

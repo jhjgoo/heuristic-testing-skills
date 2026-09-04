@@ -1,0 +1,71 @@
+# Heuristic Testing Skills
+
+一套面向测试全生命周期的启发式测试 Skill。它以产品价值确定方向，以产品风险选择重点，以测试证据驱动下一轮学习。
+
+`heuristic-testing` 是主入口；其余 Skill 提供澄清、测试空间扫描、风险分析、测试建模、测试设计、执行、回归、自动化与信心评估能力。
+
+## 安装
+
+这是一套由 18 个 Skill 组成的完整工作流。`npx skills` 不会自动安装 Skill 依赖，因此必须安装全集。
+
+```bash
+# 交互式安装
+npx skills add jhjgoo/heuristic-testing-skills --skill '*'
+
+# Codex 全局安装
+npx skills add jhjgoo/heuristic-testing-skills --skill '*' --agent codex --global --yes
+
+# Codex 项目级安装
+npx skills add jhjgoo/heuristic-testing-skills --skill '*' --agent codex --yes
+```
+
+安装前查看可用 Skill：
+
+```bash
+npx skills add jhjgoo/heuristic-testing-skills --list
+```
+
+不要只安装 `heuristic-testing`。主入口会路由到其他 Skill，缺少任一组件都会削弱工作流。
+
+## 使用
+
+在支持 Agent Skills 的客户端中显式调用 `heuristic-testing`，并提供 PRD、Spec、代码、测试对象或当前观察。它会先判断独立测试与项目测试路径，再路由到当前真正需要的测试活动。
+
+第一次使用请阅读[《海盗派启发式测试：方法与 Skill 使用教程》](docs/guide.md)。它通过完整案例讲解这套测试方法，以及何时调用哪个 Skill、应取得什么产物、何时停止或转向。
+
+也可以直接调用方法 Skill，例如：
+
+- `scanning-product-with-sfdipot`
+- `analyzing-test-space-with-mfq`
+- `modeling-tests-with-ppdcs`
+- `writing-unit-tests`
+
+## Skill 清单
+
+| 阶段 | Skill |
+| --- | --- |
+| 主入口 | `heuristic-testing` |
+| 使命与上下文 | `setting-test-mission`, `clarifying-test-basis` |
+| 项目与变化 | `mapping-project-test-space`, `analyzing-change-for-testing` |
+| 测试空间 | `mapping-test-space`, `scanning-product-with-sfdipot`, `analyzing-test-space-with-mfq` |
+| 风险与模型 | `analyzing-product-risks`, `modeling-tests-with-ppdcs` |
+| 测试设计 | `designing-test-experiments`, `writing-unit-tests`, `challenging-test-designs` |
+| 执行与发现 | `running-test-sessions`, `investigating-findings` |
+| 回归与自动化 | `selecting-regression-tests`, `designing-test-automation` |
+| 证据与信心 | `assessing-test-confidence` |
+
+## 更新
+
+```bash
+npx skills update
+```
+
+`update` 只更新已经安装的 Skill。仓库新增组件后，请重新执行全集安装命令。
+
+## 兼容性
+
+仓库遵循 [Agent Skills specification](https://agentskills.io/specification)，并使用 `npx skills` 的标准多 Skill 目录结构。不同客户端对 Skill 路由和工具调用的执行能力可能不同；格式兼容不等于行为完全一致。
+
+## License
+
+[MIT](LICENSE)
